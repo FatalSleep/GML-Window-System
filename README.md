@@ -14,6 +14,7 @@ The scene configurations allows you to change how the view--represented by the s
 Trigger Configurations:
 <br>
 The trigger configurations are essentially scene events. For example when an explosion occurs, you can apply a trigger or multiple triggers and scene together when the scene is applied to the view via SceneRefreshExt(). Update and run the trigger, then apply the trigger to the scene and voila. Triggers don't change the scene configuration, they are applied to the view along with the scene configuration so that the scene and trigger remain consistent and independent.
+In essence this is `view_xy = scene_xy + trigger_xy` when the trigger is relative, else the scene is ignored if the trigger is absolute `view_xy = trigger_xy`.
 
 This set of scripts offers a simple solution to managing window and view configurations.
 <br>
@@ -94,4 +95,25 @@ if ( !WindowHidden() && ( !WindowIsUpdated( global.Window ) || !SceneIsUpdated( 
 var ScaleX = surface_get_width( application_surface );
 var ScaleY = surface_get_height( application_surface );
 WindowDraw( global.Window, global.Scene, global.Window[# 0, WP_WIDTH ] / 2, global.Window[# 0, WP_HEIGHT ] / 2, ScaleX / 2, ScaleY / 2, 0, false );
+```
+<b>Creating and using triggers.</b>
+```
+/// Create [Event]
+// This will create a trigger with the given position that is applied until the timer
+// runs out after repeating x number of times.
+globbal.Trigger = TriggerCreate( trigger-id, active, absolute, x, y, timer, repeats );
+
+// Step End [Event]
+// Use step end event so that the view is updated to it's new position AFTER the scene configuration is set in step normal.
+// Sample explosition trigger.
+global.Trigger[# 0, TP_XPOS ] = irandom( -10, 10 );
+global.Trigger[# 0, TP_YPOS ] = irandom( -10, 10 );
+
+SceneRefreshExt( global.Scene, global.Trigger );
+TriggerRun( global.Trigger );
+
+// Collision [Event]
+// Set the trigger to run when we collide with something, e.g. a bomb.
+// Runs the trigger for half a second.
+global.Trigger[# 0, TP_TIMER ] = room_speed * 0.5;
 ```
