@@ -106,8 +106,8 @@ globbal.Trigger = TriggerCreate( trigger-id, active, absolute, x, y, timer, repe
 // Step End [Event]
 // Use step end event so that the view is updated to it's new position AFTER the scene configuration is set in step normal.
 // Sample explosition trigger.
-global.Trigger[# 0, TP_XPOS ] = irandom( -10, 10 );
-global.Trigger[# 0, TP_YPOS ] = irandom( -10, 10 );
+global.Trigger[# 0, TP_XPOS ] = irandom_range( -10, 10 );
+global.Trigger[# 0, TP_YPOS ] = irandom_range( -10, 10 );
 
 SceneRefreshExt( global.Scene, global.Trigger );
 TriggerRun( global.Trigger );
