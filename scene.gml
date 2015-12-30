@@ -149,4 +149,3 @@
    return ( Scene[# $00, SP_WIDTH ] == surface_get_width( application_surface ) &&
    Scene[# $00, SP_HEIGHT ] == surface_get_height( application_surface ) ) &&
    ( Scene[# $00, SP_WIDTH ] > $00 && Scene[# $00, SP_HEIGHT ] > $00 );
-
