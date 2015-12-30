@@ -3,7 +3,7 @@ A simple system for handling window and view resizing in GM.
 
 Window / View scaling. The window system allows you to handle scaling for the window and view. The view scaling functions by multiplying the view width/height by a factor of x. While the window scaling doesn't exactly do this... The window scaling doesn't affect the window size, but rather the window draw size, e.g. the size of the application_surface when drawn. So if you have an absolute window and view of size 640x480 and set the window scaling to 0.5, the application surface will be drawn to the window at half size. The view will remain at 640x480, but will be drawn scaled down to half the size--320x240.
 
-Pre-requisite: Global Game Settings -> Graphics -> Scaling -> Full Scale
+Dependency: Global Game Settings -> Graphics -> Scaling -> Full Scale
 
 <b>Window Configurations:</b>
 <br>
