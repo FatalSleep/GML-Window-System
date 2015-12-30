@@ -3,6 +3,18 @@ A simple system for handling window and view resizing in GM.
 
 Window / View scaling. The window system allows you to handle scaling for the window and view. The view scaling functions by multiplying the view width/height by a factor of x. While the window scaling doesn't exactly do this... The window scaling doesn't affect the window size, but rather the window draw size, e.g. the size of the application_surface when drawn. So if you have an absolute window and view of size 640x480 and set the window scaling to 0.5, the application surface will be drawn to the window at half size. The view will remain at 640x480, but will be drawn scaled down to half the size--320x240.
 
+Window Configurations:
+<br>
+The window configuratiosn allows you to change the physical window size as well as how the application_surface is drawn, e.g. the virtual window.
+
+Scene Configurations:
+<br>
+The scene configurations allows you to change how the view--represented by the specified scene--is displayed and functions. Such as for positioning the view using the scene configurations or preparing scene configurations for future view changes, e.g. when changing resolutions.
+
+Trigger Configurations:
+<br>
+The trigger configurations are essentially scene events. For example when an explosion occurs, you can apply a trigger or multiple triggers and scene together when the scene is applied to the view via SceneRefreshExt(). Update and run the trigger, then apply the trigger to the scene and voila. Triggers don't change the scene configuration, they are applied to the view along with the scene configuration so that the scene and trigger remain consistent and independent.
+
 This set of scripts offers a simple solution to managing window and view configurations.
 <br>
 <br>
