@@ -9,6 +9,7 @@
    Trigger[# $00, TP_STOP ] = argument[ $05 ];
    Trigger[# $00, TP_REPEAT ] = argument[ $06 ];
    Trigger[# $00, TP_TIMER ] = $00;
+   return Trigger;
 
 #define TriggerRun
 ///TiggerRun( trigger )
