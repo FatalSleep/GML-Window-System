@@ -57,8 +57,8 @@
 
 #define WindowSetMax
 ///WindowSetMax( maxw, maxh )
-   window_set_min_width( argument[ $00 ] );
-   window_set_min_height( argument[ $01 ] );
+   window_set_max_width( argument[ $00 ] );
+   window_set_max_height( argument[ $01 ] );
 
 
 #define WindowSetRes
