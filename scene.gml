@@ -94,24 +94,33 @@
 
 
 #define SceneRefreshExt
-///SceneRefreshExt( scene, trigger )
+///SceneRefreshExt( scene, trigger_list, event_trigger )
    var Scene = argument[ $00 ];
-   var Trigger = argument[ $01 ];
+   var TriggerList = argument[ $01 ];
+   var EventTrigger = argument[ $02 ];
    var Index = Scene[# $00, SP_INDEX ];
+   var TriggerSumX = 0.0, TriggerSumY = 0.0;
    
-   if ( ds_exists( Trigger, ds_type_grid ) ) {
-      if ( Trigger[? TP_ACTIVE ] ) {
-         if ( Trigger[? TP_ABSOLUTE ] ) {
-            view_xview[ Index ] = Trigger[# $00, TP_XPOS ];
-            view_yview[ Index ] = Trigger[# $00, TP_YPOS ];
-         } else {
-            view_xview[ Index ] = Scene[# $00, SP_XPOS ] + Trigger[# $00, TP_XPOS ];
-            view_yview[ Index ] = Scene[# $00, SP_YPOS ] + Trigger[# $00, TP_YPOS ];
-         }
+   for( var i = 0; i < ds_list_size( TriggerList ); i ++ ) {
+      var Trigger = ds_list_find_value( TriggerList, i );
+      
+      if ( ds_exists( Trigger, ds_type_grid ) && !Trigger[# $00, TP_ABSOLUTE ] ) {
+         TriggerSumX += Trigger[# $00, TP_XPOS ];
+         TriggerSumY += Trigger[# $00, TP_YPOS ];
+      }
+   }
+   
+   if ( ds_exists( Trigger, ds_type_grid ) && Trigger[# $00, TP_ACTIVE ] ) {
+      if ( Trigger[# $00, TP_ABSOLUTE ] ) {
+         view_xview[ Index ] = EventTrigger[# $00, TP_XPOS ] + TriggerSumX;
+         view_yview[ Index ] = EventTrigger[# $00, TP_YPOS ] + TriggerSumY;
+      } else {
+         view_xview[ Index ] = Scene[# $00, SP_XPOS ] + EventTrigger[# $00, TP_XPOS ] + TriggerSumX;
+         view_yview[ Index ] = Scene[# $00, SP_YPOS ] + EventTrigger[# $00, TP_YPOS ] + TriggerSumY;
       }
    } else {
-      view_xview[ Index ] = Scene[# $00, SP_XPOS ];
-      view_yview[ Index ] = Scene[# $00, SP_YPOS ];
+      view_xview[ Index ] = Scene[# $00, SP_XPOS ] + TriggerSumX;
+      view_yview[ Index ] = Scene[# $00, SP_YPOS ] + TriggerSumY;
    }
    
    view_wview[ Index ] = Scene[# $00, SP_WIDTH ] * Scene[# $00, SP_SCALE ];
@@ -127,7 +136,6 @@
    Scene[# $00, SP_WIDTH ] > $00 && Scene[# $00, SP_HEIGHT ] > $00 ) {
       surface_resize( application_surface, Scene[# $00, SP_WIDTH ], Scene[# $00, SP_HEIGHT ] );
    }
-
 
 #define SceneSetSize
 ///SceneSetSize( scene, width, height )
