@@ -61,7 +61,7 @@ if ( !WindowHidden() && ( !WindowIsUpdated( global.Window ) || !SceneIsUpdated( 
     SceneSetSize( global.Scene, global.Window[# 0, WP_WIDTH ], global.Window[# 0, WP_HEIGHT] );
     
     // Finally update the physical window and view with the window and view configurations.
-    SceneRefresh( global.Scene);
+    SceneRefresh( global.Scene );
     WindowUpdate( global.Window );
 }
 
