@@ -73,7 +73,7 @@
       Index = Scene[# $00, SP_INDEX],
       TriggerSumX = 0.0,
       TriggerSumY = 0.0,
-      Trigger = TY_NULL;
+      Trigger = undefined;
    
    for(var i = 0; i < ds_list_size(TriggerList); i ++) {
       Trigger = ds_list_find_value(TriggerList, i);
@@ -84,7 +84,7 @@
       }
    }
    
-   if (EventTrigger != TY_NULL && EventTrigger[# $00, TP_ACTIVE]) {
+   if (EventTrigger != undefined && EventTrigger[# $00, TP_ACTIVE]) {
       if (EventTrigger[# $00, TP_ABSOLUTE]) {
          view_xview[Index] = EventTrigger[# $00, TP_XPOS] + TriggerSumX;
          view_yview[Index] = EventTrigger[# $00, TP_YPOS] + TriggerSumY;
