@@ -1,7 +1,7 @@
 #define WindowCreate
 ///WindowCreate( width, height, virtual_scale, physical_scale )
    // DESCRIPTION: Creates and returns a new window configuration.
-   var Wind = DSGRID(PARAM_ARRAY, $05);
+   var Wind = ds_grid_create(PARAM_ARRAY, $05);
    Wind[# $00, WP_WIDTH] = argument[$00];
    Wind[# $00, WP_HEIGHT] = argument[$01];
    Wind[# $00, WP_VIRTUALSCALE] = argument[$02];
