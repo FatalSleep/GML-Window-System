@@ -1,7 +1,7 @@
 #define SceneCreate
 ///SceneCreate( viewid, xpos, ypos, width, height, hborder, vborder, hspd, vspd, scale, angle, visible, enable )
    // DESCRIPTION: Creates and returns a new scene configuration.
-   var Scene = DSGRID(PARAM_ARRAY, $0E);
+   var Scene = ds_grid_Create(PARAM_ARRAY, $0E);
    Scene[# $00, SP_INDEX] = argument[$00];
    Scene[# $00, SP_XPOS] = argument[$01];
    Scene[# $00, SP_YPOS] = argument[$02];
@@ -75,8 +75,8 @@
       TriggerSumY = 0.0,
       Trigger = TY_NULL;
    
-   for(var i = 0; i < DSLISTSIZE(TriggerList); i ++) {
-      Trigger = DSLISTFIND(TriggerList, i);
+   for(var i = 0; i < ds_list_size(TriggerList); i ++) {
+      Trigger = ds_list_find_value(TriggerList, i);
       
       if ( Trigger[# $00, TP_ABSOLUTE ] ) {
          TriggerSumX += Trigger[# $00, TP_XPOS];
