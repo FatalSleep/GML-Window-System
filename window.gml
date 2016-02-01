@@ -15,7 +15,7 @@
    application_surface_draw_enable(argument[$00]);
 
 #define WindowDraw
-///WindowDraw( window, scene, guix, guiy, xorigin, yorigin, angle )
+///WindowDraw( window, scene, guix, guiy, xorigin, yorigin, angle, absolute? )
    // DESCRIPTION: Draws the window--perferably to the [DRAW GUI END] event.
    var Wind = argument[$00],
       Scene = argument[$01],
