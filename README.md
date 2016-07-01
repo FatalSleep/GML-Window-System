@@ -25,7 +25,7 @@ This set of scripts offers a simple solution to managing window and view configu
 <br>
 <br>
 <b>Creating an absolute window / view combination (where the window / view are the same size and scale).</b>
-```
+```GML
 //
 // Creating an absolute window / view combination (where the window / view are the same size and scale).
 // This is useful for creating applications as opposed to games.
@@ -76,7 +76,7 @@ var ScaleY = surface_get_height( application_surface );
 WindowDraw( global.Window, global.Scene, global.Window[# 0, WP_WIDTH ] / 2, global.Window[# 0, WP_HEIGHT ] / 2, ScaleX / 2, ScaleY / 2, 0, true );
 ```
 <b>Creating a relative window / view combination (where the window / view are different sizes and scaling).</b>
-```
+```GML
 //
 // This is useful for creating games as opposed to applications.
 //
@@ -101,7 +101,7 @@ var ScaleY = surface_get_height( application_surface );
 WindowDraw( global.Window, global.Scene, global.Window[# 0, WP_WIDTH ] / 2, global.Window[# 0, WP_HEIGHT ] / 2, ScaleX / 2, ScaleY / 2, 0, false );
 ```
 <b>Creating and using triggers.</b>
-```
+```GML
 /// Create [Event]
 // This will create a trigger with the given position that is applied until the timer
 // runs out after repeating x number of times.
